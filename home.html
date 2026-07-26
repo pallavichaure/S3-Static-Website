@@ -1,0 +1,559 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TravelGo - Tours & Travel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f4f4f4;
+}
+
+/* NAVBAR (GLASS EFFECT) */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ffcc70;
+}
+
+/* BUTTONS */
+.nav-buttons button {
+    margin-left: 10px;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.login-btn {
+    background: white;
+    color: #333;
+}
+
+.book-btn {
+    background: linear-gradient(to right, #ff7e5f, #ff416c);
+    color: white;
+}
+
+.book-btn:hover {
+    transform: scale(1.1);
+}
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* background overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, #000000cc, #00000066);
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 1000px;
+    animation: fadeIn 1s ease;
+}
+
+.hero h1 {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* HIGHLIGHT CARDS */
+.highlight-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.h-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    width: 220px;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.h-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255,255,255,0.2);
+}
+
+.h-card h3 {
+    margin-bottom: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .h-card {
+        width: 90%;
+    }
+}
+/* SEARCH */
+.search-box {
+    background: rgba(255,255,255,0.95);
+    padding: 12px;
+    border-radius: 50px;
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-box input {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+}
+
+.search-btn {
+    background: #0072ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* CTA */
+.cta-btn {
+    margin-top: 20px;
+    background: linear-gradient(to right, #ff7e5f, #ff416c);
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cta-btn:hover {
+    transform: scale(1.1);
+}
+
+.section {
+    padding: 70px 20px;
+    text-align: center;
+    background: #f4f6f9;
+}
+
+.section h2 {
+    font-size: 35px;
+    margin-bottom: 30px;
+    color: #222;
+}
+
+/* GRID LAYOUT */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* MODERN CARD */
+.card {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.4s;
+    background: white;
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+/* overlay text */
+.card h3 {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+    z-index: 2;
+}
+
+/* dark gradient overlay */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+/* hover effect */
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+/* FOOTER */
+.footer {
+    background: #111;
+    color: white;
+    padding: 50px 20px 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer-box h2,
+.footer-box h3 {
+    margin-bottom: 15px;
+}
+
+.footer-box p {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.footer-box a {
+    display: block;
+    color: #bbb;
+    text-decoration: none;
+    margin: 6px 0;
+    transition: 0.3s;
+}
+
+.footer-box a:hover {
+    color: #ffcc70;
+    transform: translateX(5px);
+}
+
+.socials span {
+    display: block;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: 0.3s;
+    color: #bbb;
+}
+
+.socials span:hover {
+    color: #ff416c;
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 35px;
+    }
+    .navbar {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">🌍 TravelGo</div>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="destination.html">Destinations</a>
+        <a href="packages.html">Packages</a>
+       
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-buttons">
+        <a href="admin.php"><button class="login-btn">Login</button></a>
+        <a href="book.html">
+    <button>Book Now</button>
+</a>
+    </div></header>
+
+<section class="hero">
+    <div class="hero-content">
+
+        <h1>Explore the World ✈️</h1>
+        <p>Your dream journey starts here</p>
+
+        <div class="highlight-cards">
+
+            <div class="h-card">
+                <h3>🌍 100+ Destinations</h3>
+                <p>Explore top places around the world</p>
+            </div>
+
+            <div class="h-card">
+                <h3>💸 Best Prices</h3>
+                <p>Affordable travel packages for everyone</p>
+            </div>
+
+            <div class="h-card">
+                <h3>🧭 Easy Booking</h3>
+                <p>Fast & simple booking in few clicks</p>
+            </div>
+
+        </div>
+
+        <button class="cta-btn">Start Now</button>
+
+    </div>
+</section>
+ 
+<div class="section">
+    <h2>Explore India </h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="goa.jpg" alt="Goa">
+            <h3>Goa 🏖️</h3>
+            
+        </div>
+
+
+        <div class="card">
+            <img src="keral1.jpg" alt="Kerala">
+            <h3>Kerala 🌴</h3>
+            
+        </div>
+
+        <div class="card">
+            <img src="himachal.jpg" alt="Himachal Pradesh">
+            <h3>Himachal 🏔️</h3>
+            
+        </div>
+
+        <div class="card">
+            <img src="utt.jpg" alt="Uttarakhand">
+            <h3>Uttarakhand 🏞️</h3>
+           
+        </div>
+
+        <div class="card">
+            <img src="mh.jpg" alt="Maharashtra">
+            <h3>Maharashtra 🌆</h3>
+            
+        </div>
+
+        <div class="card">
+            <img src="karnatka.jpg" alt="Karnataka">
+            <h3>Karnataka 🌿</h3>
+            
+        </div>
+
+        <div class="card">
+            <img src="tamilnadu.jpg" alt="Tamil Nadu">
+            <h3>Tamil Nadu 🛕</h3>
+            
+        </div>
+
+        <div class="card">
+            <img src="wb.jpg" alt="West Bengal">
+            <h3>West Bengal 🌉</h3>
+            
+        </div>
+
+    </div>
+</div> 
+<div class="section">
+    <h2>Explore World 🌍</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="paris.jpg" alt="Paris">
+            <h3>Paris </h3>
+        </div>
+
+        <div class="card">
+            <img src="london.jpg" alt="London">
+            <h3>London </h3>
+        </div>
+
+        <div class="card">
+            <img src="dubai.jpg" alt="Dubai">
+            <h3>Dubai </h3>
+        </div>
+
+        <div class="card">
+            <img src="newyorl.jpg" alt="New York">
+            <h3>New York </h3>
+        </div>
+
+        <div class="card">
+            <img src="Sw.jpg" alt="Switzerland">
+            <h3>Switzerland </h3>
+        </div>
+
+        <div class="card">
+            <img src="bali.jpg" alt="Bali">
+            <h3>Bali </h3>
+        </div>
+
+        <div class="card">
+            <img src="tokyo.jpg" alt="Tokyo">
+            <h3>Tokyo </h3>
+        </div>
+
+        <div class="card">
+            <img src="montainS.jpg" alt="Rome">
+            <h3>Mountains Swiss</h3>
+        </div>
+
+    </div>
+</div>
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+            <h2>🌍 TravelGo</h2>
+            <p>Explore the world with the best travel deals, destinations, and unforgettable experiences.</p>
+        </div>
+
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <a href="#">Home</a>
+            <a href="#">Destinations</a>
+            <a href="#">Packages</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-box">
+            <h3>Support</h3>
+            <a href="contact.html">Help Center</a>
+            <a href="guide.html">Booking Guide</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+
+        <div class="footer-box">
+            <h3>Follow Us</h3>
+            <div class="socials">
+                <span>📘 Facebook</span>
+                <span>📸 Instagram</span>
+                <span>🐦 Twitter</span>
+                <span▶️ YouTube</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 TravelGo | Designed with ❤️ for Travelers</p>
+    </div>
+
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const images = ["1.jpg", "2.jpg"];
+    let index = 0;
+
+    const hero = document.querySelector('.hero');
+
+    function changeBackground() {
+        hero.style.background =
+            `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${images[index]}') center/cover no-repeat`;
+
+        index = (index + 1) % images.length;
+    }
+
+    changeBackground(); // first image
+    setInterval(changeBackground, 3000);
+
+});
+</script>
+
+
+</body>
+</html>
+

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Now - TravelGo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* BACKGROUND SLIDER */
+body {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    animation: slideBg 15s infinite;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+@keyframes slideBg {
+    0%   { background-image: url('1.jpg'); }
+    33%  { background-image: url('2.jpg'); }
+    66%  { background-image: url('3.jpg'); }
+    100% { background-image: url('4.jpg'); }
+}
+
+
+/* NAVBAR (GLASS EFFECT) */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ffcc70;
+}
+
+/* BUTTONS */
+.nav-buttons button {
+    margin-left: 10px;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.login-btn {
+    background: white;
+    color: #333;
+}
+
+.book-btn {
+    background: linear-gradient(to right, #ff7e5f, #ff416c);
+    color: white;
+}
+
+.book-btn:hover {
+    transform: scale(1.1);
+}
+
+/* CENTER */
+.booking {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 120px;
+}
+
+.booking h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+/* FORM */
+.form-box {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 20px;
+    width: 500px;
+    color: white;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* INPUT IMPROVEMENT */
+.form-grid input,
+.form-grid select {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.25);
+    color: white;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+/* PLACEHOLDER FIX */
+.form-grid input::placeholder {
+    color: #f1f1f1;
+}
+
+/* FOCUS EFFECT */
+.form-grid input:focus,
+.form-grid select:focus {
+    border: 1px solid #ff7e5f;
+    background: rgba(255,255,255,0.35);
+    box-shadow: 0 0 10px rgba(255,126,95,0.6);
+}
+
+/* APPLY BUTTON */
+.form-grid button[type="button"] {
+    background: linear-gradient(to right, #ff7e5f, #30a0c6);
+    border-radius: 25px;
+    font-weight: bold;
+}
+/* FIX SELECT DROPDOWN LOOK */
+.form-grid select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background: rgba(255,255,255,0.25);
+    color: white;
+    cursor: pointer;
+}
+
+/* OPTION COLOR FIX (VERY IMPORTANT) */
+.form-grid select option {
+    color: black;   /* dropdown text visible */
+    background: white;
+}
+
+/* ADD DROPDOWN ICON */
+.form-grid select {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 20 20' width='20'><path d='M5 7l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+}
+/* CONFIRM BOOKING BUTTON */
+.confirm-btn {
+    background: linear-gradient(135deg, #ff7e5f, #ff416c);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    grid-column: span 2; /* full width */
+}
+
+/* HOVER EFFECT */
+.confirm-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 65, 108, 0.6);
+}
+
+/* CLICK EFFECT */
+.confirm-btn:active {
+    transform: scale(0.95);
+}
+/* TOTAL PRICE */
+#price {
+    font-size: 20px;
+    color: #ffcc70;
+}
+
+/* COUPON CARD SECTION */
+.coupon-section {
+    margin: 40px auto;
+    text-align: center;
+}
+
+.coupon-section h2 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.coupons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.coupon-card {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    width: 200px;
+    transition: 0.3s;
+}
+
+.coupon-card:hover {
+    transform: scale(1.1);
+}
+
+.coupon-card h3 {
+    margin-bottom: 10px;
+}
+
+/* POPUP */
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+/* FOOTER */
+.footer {
+    background: #111;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">🌍 TravelGo</div>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="destination.html">Destinations</a>
+        <a href="packages.html">Packages</a>
+       
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-buttons">
+        <a href="admin.php"><button class="login-btn">Login</button></a>
+        <a href="book.html">
+    <button>Book Now</button>
+</a>
+    </div></header>
+<!-- FORM -->
+<section class="booking">
+
+<h1>Book Your Trip ✈️</h1>
+
+<div class="form-box">
+<form method="POST" onsubmit="showPopup(event)">
+<div class="form-grid">
+
+<input type="text" name="name" placeholder="Full Name" required>
+
+<!-- ✅ Improved Phone Input -->
+<input type="tel" name="phone" placeholder="Phone Number"
+       pattern="[0-9]{10}" maxlength="10"
+       title="Enter 10 digit phone number" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<input type="number" id="people" name="people" placeholder="Travelers" required>
+
+<!-- ✅ NEW DAYS FIELD -->
+<input type="number" id="days" name="days" placeholder="Number of Days" min="1" required>
+
+<input type="hidden" name="totalPrice" id="totalPriceInput">
+
+<select id="destination" name="destination" required>
+<option value="">Select Destination</option>
+
+<option>Goa</option>
+<option>Kerala</option>
+<option>Himachal</option>
+<option>Uttarakhand</option>
+<option>Maharashtra</option>
+<option>Karnataka</option>
+<option>Tamil Nadu</option>
+<option>West Bengal</option>
+
+<option>Paris</option>
+<option>London</option>
+<option>Dubai</option>
+<option>New York</option>
+<option>Switzerland</option>
+<option>Bali</option>
+<option>Tokyo</option>
+<option>Swiss Mountains</option>
+</select>
+
+<select id="packageType" name="packageType" required>
+<option value="">Package</option>
+<option>Standard</option>
+<option>Premium</option>
+<option>Luxury</option>
+</select>
+
+<input type="text" id="coupon" placeholder="Coupon Code">
+<button type="button" onclick="applyCoupon()">Apply</button>
+
+<div class="full">
+Total Price: ₹ <span id="price">0</span>
+</div>
+
+<button class="confirm-btn full">Confirm Booking ✈️</button>
+
+</div>
+</form>
+</div>
+
+</section>
+
+<!-- COUPON CARDS -->
+<section class="coupon-section">
+<h2>🎟 Available Coupons</h2>
+
+<div class="coupons">
+<div class="coupon-card">
+<h3>SAVE10</h3>
+<p>10% OFF</p>
+</div>
+
+<div class="coupon-card">
+<h3>TRAVEL20</h3>
+<p>20% OFF</p>
+</div>
+
+<div class="coupon-card">
+<h3>GOA50</h3>
+<p>50% OFF</p>
+</div>
+</div>
+</section>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popup-content">
+<h2>Booking Successful 🎉</h2>
+<button onclick="closePopup()">OK</button>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+<p>© 2026 TravelGo</p>
+</footer>
+<script>
+// ✅ PACKAGE PRICES (MATCHED WITH YOUR PACKAGES PAGE)
+const prices = {
+    // 🇮🇳 INDIA
+    "Goa": 25000,
+    "Kerala": 30000,
+    "Himachal": 28000,
+    "Uttarakhand": 26000,
+    "Maharashtra": 20000,
+    "Karnataka": 27000,
+    "Tamil Nadu": 24000,
+    "West Bengal": 29000,
+
+    // 🌍 WORLD
+    "Paris": 130000,
+    "London": 120000,
+    "Dubai": 90000,
+    "New York": 150000,
+    "Switzerland": 180000,
+    "Bali": 85000,
+    "Tokyo": 140000,
+    "Swiss Mountains": 170000
+};
+
+// ✅ PACKAGE TYPE MULTIPLIER
+const multiplier = {
+    "Standard": 1,
+    "Premium": 1.5,
+    "Luxury": 2
+};
+
+let discount = 0;
+let currentTotal = 0;
+
+// ✅ CALCULATE TOTAL PRICE
+function calculate() {
+    let destination = document.getElementById("destination").value;
+    let people = parseInt(document.getElementById("people").value) || 0;
+    let packageType = document.getElementById("packageType").value;
+
+    if (destination && people && packageType) {
+        let total = prices[destination] * people * multiplier[packageType];
+        currentTotal = total;
+
+        let finalPrice = total - discount;
+
+        document.getElementById("price").innerText = finalPrice.toLocaleString();
+        document.getElementById("saved").innerText = discount.toLocaleString();
+    } else {
+        document.getElementById("price").innerText = "0";
+        document.getElementById("saved").innerText = "0";
+    }
+}
+
+// ✅ APPLY COUPON
+function applyCoupon() {
+    let code = document.getElementById("coupon").value.toUpperCase();
+
+    if (currentTotal < 50000) {
+        alert("⚠️ Coupons available only for bookings above ₹50,000");
+        discount = 0;
+        calculate();
+        return;
+    }
+
+    if (code === "SAVE10") {
+        discount = currentTotal * 0.10;
+        alert("✅ 10% Discount Applied");
+    }
+
+    else if (code === "TRAVEL20") {
+        discount = currentTotal * 0.20;
+        alert("✅ 20% Discount Applied");
+    }
+
+    else if (code === "GOA50") {
+        discount = currentTotal * 0.50;
+
+        // 🔥 MAX LIMIT ₹75,000
+        if (discount > 75000) {
+            discount = 25000;
+        }
+
+        alert("🔥 50% Discount Applied (Max ₹25,000)");
+    }
+
+    else {
+        discount = 0;
+        alert("❌ Invalid Coupon Code");
+    }
+
+    calculate();
+}
+
+// ✅ AUTO UPDATE EVENTS
+document.getElementById("destination").addEventListener("change", calculate);
+document.getElementById("people").addEventListener("input", calculate);
+document.getElementById("packageType").addEventListener("change", calculate);
+
+// ✅ SUBMIT POPUP
+function showPopup(e) {
+    e.preventDefault();
+
+    if (currentTotal === 0) {
+        alert("⚠️ Please fill all booking details");
+        return;
+    }
+
+    // SET FINAL PRICE IN HIDDEN INPUT
+    document.getElementById("totalPriceInput").value = currentTotal - discount;
+
+    let form = document.querySelector("form");
+    let formData = new FormData(form);
+
+    fetch("book.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        if (data === "success") {
+            document.getElementById("popup").style.display = "flex";
+        } else {
+            alert("❌ Booking Failed");
+        }
+    })
+    .catch(() => {
+        alert("Server error");
+    });
+}
+
+// ✅ CLOSE POPUP
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TravelGo - Destinations</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #fafafa;
+}
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+}
+
+nav a:hover {
+    color: #ffcc70;
+}
+
+.nav-buttons button {
+    margin-left: 10px;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.login-btn {
+    background: white;
+    color: #333;
+}
+
+/* SECTION */
+.highlight-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 40px;
+    flex-wrap: wrap;
+}
+
+/* reverse layout */
+.highlight-section.reverse {
+    flex-direction: row-reverse;
+}
+
+/* IMAGE */
+.left-img img {
+    width: 600px;
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* RIGHT SIDE */
+.right-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-content h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+/* CARD */
+.highlight-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 320px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-left: 4px solid #ff416c;
+    transition: 0.3s;
+}
+
+.highlight-card:hover {
+    transform: translateX(8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.highlight-card h3 {
+    margin-bottom: 8px;
+}
+
+.highlight-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .highlight-section {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .highlight-card {
+        width: 100%;
+    }
+
+    .left-img img {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">🌍 TravelGo</div>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="destination.html">Destinations</a>
+        <a href="packages.html">Packages</a>
+       
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-buttons">
+        <a href="admin.php"><button class="login-btn">Login</button></a>
+        <a href="book.html">
+    <button>Book Now</button>
+</a>
+    </div></header>
+    
+<!-- 🌍 LONDON -->
+<section class="highlight-section">
+
+    <div class="left-img">
+        <img src="london.jpg" alt="London View">
+    </div>
+
+    <div class="right-content">
+        <h2>London</h2>
+
+        <div class="highlight-card">
+            <h3>🏰 Famous Places</h3>
+            <p>Big Ben, Tower Bridge, Buckingham Palace.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍴 Food</h3>
+            <p>British cuisine and global food culture.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>Shopping, museums, river cruises, nightlife.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 🌄 SWITZERLAND -->
+<section class="highlight-section reverse">
+
+    <div class="left-img">
+        <img src="sw.jpg" alt="Switzerland">
+    </div>
+
+    <div class="right-content">
+        <h2>Switzerland</h2>
+
+        <div class="highlight-card">
+            <h3>🏔 Famous Places</h3>
+            <p>Zurich, Lucerne, Interlaken, Geneva.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍫 Food</h3>
+            <p>Swiss chocolate, cheese fondue, alpine cuisine.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>Skiing, train journeys, lake tours, hiking.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ⛰ MOUNTAINS -->
+<section class="highlight-section">
+
+    <div class="left-img">
+        <img src="montainS.jpg" alt="Swiss Mountains">
+    </div>
+
+    <div class="right-content">
+        <h2>Swiss Mountains ⛰</h2>
+
+        <div class="highlight-card">
+            <h3>🏔 Peaks</h3>
+            <p>Matterhorn, Jungfrau, Mount Titlis.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🌨 Experience</h3>
+            <p>Snow landscapes, cable cars, glaciers.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>Skiing, snowboarding, trekking, photography.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 🏙 DUBAI -->
+<section class="highlight-section reverse">
+
+    <div class="left-img">
+        <img src="dubai.jpg" alt="Dubai">
+    </div>
+
+    <div class="right-content">
+        <h2>Dubai</h2>
+
+        <div class="highlight-card">
+            <h3>🏙 Attractions</h3>
+            <p>Burj Khalifa, Palm Jumeirah, Dubai Mall.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍴 Food</h3>
+            <p>Arabic cuisine, luxury dining, street food.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>Desert safari, shopping, nightlife, beaches.</p>
+        </div>
+    </div>
+</section>
+<section class="highlight-section">
+    <div class="left-img">
+        <img src="goa.jpg" alt="Goa">
+    </div>
+    <div class="right-content">
+        <h2>Goa</h2>
+
+        <div class="highlight-card">
+            <h3>🏖 Attractions</h3>
+            <p>Baga Beach, Calangute, Anjuna, Fort Aguada.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍴 Food</h3>
+            <p>Seafood, Goan curry, beach shacks.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>Water sports, nightlife, beach parties.</p>
+        </div>
+    </div>
+</section>
+<section class="highlight-section reverse">
+    <div class="left-img">
+        <img src="keral1.jpg" alt="Kerala">
+    </div>
+    <div class="right-content">
+        <h2>Kerala</h2>
+
+        <div class="highlight-card">
+            <h3>🌿 Attractions</h3>
+            <p>Alleppey, Munnar, Kochi, Backwaters.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍴 Food</h3>
+            <p>South Indian cuisine, coconut-based dishes.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>Houseboats, nature tours, Ayurveda spa.</p>
+        </div>
+    </div>
+</section>
+<section class="highlight-section">
+    <div class="left-img">
+        <img src="himachal.jpg" alt="Himachal">
+    </div>
+    <div class="right-content">
+        <h2>Himachal</h2>
+
+        <div class="highlight-card">
+            <h3>🏔 Attractions</h3>
+            <p>Manali, Shimla, Dharamshala, Spiti Valley.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍴 Food</h3>
+            <p>Himachali cuisine, local dishes.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>Trekking, snow sports, camping.</p>
+        </div>
+    </div>
+</section>
+<section class="highlight-section reverse">
+    <div class="left-img">
+        <img src="utt.jpg" alt="Uttarakhand">
+    </div>
+    <div class="right-content">
+        <h2>Uttarakhand</h2>
+
+        <div class="highlight-card">
+            <h3>🏞 Attractions</h3>
+            <p>Nainital, Mussoorie, Rishikesh, Kedarnath.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍴 Food</h3>
+            <p>Simple mountain cuisine.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>River rafting, trekking, spiritual tours.</p>
+        </div>
+    </div>
+</section>
+<section class="highlight-section">
+    <div class="left-img">
+        <img src="mh.jpg" alt="Maharashtra">
+    </div>
+    <div class="right-content">
+        <h2>Maharashtra</h2>
+
+        <div class="highlight-card">
+            <h3>🏙 Attractions</h3>
+            <p>Mumbai, Pune, Ajanta & Ellora caves.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍴 Food</h3>
+            <p>Vada pav, pav bhaji, Marathi cuisine.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>City tours, forts, cultural trips.</p>
+        </div>
+    </div>
+</section>
+<section class="highlight-section reverse">
+    <div class="left-img">
+        <img src="karnatka.jpg" alt="Karnataka">
+    </div>
+    <div class="right-content">
+        <h2>Karnataka</h2>
+
+        <div class="highlight-card">
+            <h3>🌿 Attractions</h3>
+            <p>Bangalore, Coorg, Hampi, Mysore.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍴 Food</h3>
+            <p>Dosa, idli, South Indian meals.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>Heritage tours, coffee plantations.</p>
+        </div>
+    </div>
+</section>
+<section class="highlight-section">
+    <div class="left-img">
+        <img src="tamilnadu.jpg" alt="Tamil Nadu">
+    </div>
+    <div class="right-content">
+        <h2>Tamil Nadu</h2>
+
+        <div class="highlight-card">
+            <h3>🛕 Attractions</h3>
+            <p>Chennai, Madurai, Rameswaram, temples.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍴 Food</h3>
+            <p>South Indian dishes, filter coffee.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>Temple tours, cultural experiences.</p>
+        </div>
+    </div>
+</section>
+<section class="highlight-section reverse">
+    <div class="left-img">
+        <img src="wb.jpg" alt="West Bengal">
+    </div>
+    <div class="right-content">
+        <h2>West Bengal</h2>
+
+        <div class="highlight-card">
+            <h3>🌉 Attractions</h3>
+            <p>Kolkata, Darjeeling, Sundarbans.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🍴 Food</h3>
+            <p>Rasgulla, fish curry, Bengali sweets.</p>
+        </div>
+
+        <div class="highlight-card">
+            <h3>🎯 Activities</h3>
+            <p>Tea gardens, heritage tours.</p>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>
